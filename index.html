@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación - Mónica Mi Primer Añito</title>
+  <!-- Fuentes estilo manuscrito similares a la referencia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ 
+  
+  <div class="invitation-container">
+
+  <!-- Reproductor de música oculto y botón flotante de Disney -->
+  <audio id="bgMusic" src="musica..mp3" loop></audio>
+  <button id="musicBtn" class="music-btn" title="Música">🎵</button>
+    
+    <!-- Barra de progreso superior estilo historias (6 barras exactas) -->
+    <div class="progress-bars">
+      <div class="bar"><div class="fill"></div></div>
+      <div class="bar"><div class="fill"></div></div>
+      <div class="bar"><div class="fill"></div></div>
+      <div class="bar"><div class="fill"></div></div>
+      <div class="bar"><div class="fill"></div></div>
+      <div class="bar"><div class="fill"></div></div>
+    </div>
+
+    <!-- Elementos fijos de fondo (Banderines, luz, castillo y brillos) -->
+    <div class="background-decor">
+      <div class="spotlight"></div>
+      <div class="bunting">
+        <svg viewBox="0 0 400 70" width="100%" height="100%">
+          <path d="M0,5 Q200,55 400,5" fill="none" stroke="#e5b869" stroke-width="3"/>
+          <polygon points="40,16 75,24 55,48" fill="#f7b2c4"/>
+          <polygon points="95,27 135,33 112,58" fill="#f29cb3"/>
+          <polygon points="155,34 195,36 175,62" fill="#fff5f8"/>
+          <polygon points="215,36 255,33 235,59" fill="#f7b2c4"/>
+          <polygon points="275,30 315,23 298,49" fill="#f29cb3"/>
+          <polygon points="335,19 370,11 356,36" fill="#fff5f8"/>
+        </svg>
+      </div>
+      <!-- Silueta de castillo acuarela -->
+      <div class="castle-bg"></div>
+      <div id="sparkles"></div>
+    </div>
+
+    <!-- ================= SLIDE 1: PORTADA ================= -->
+    <section class="slide active" data-slide="0">
+      <h1 class="curved-title">Invitación</h1>
+      <div class="center-art bounce-in">
+        <img src="minnie1.png" alt="Minnie Bebé" class="character-img" onerror="this.style.display='none'">
+        <div class="cloud-base"></div>
+      </div>
+      <h2 class="script-big fade-up">Especial</h2>
+    </section>
+
+    <!-- ================= SLIDE 2: DEDICATORIA ================= -->
+    <section class="slide slide-2-marco" data-slide="1">
+      <p class="dedication-text fade-up">
+        Con mucho amor<br>
+        celebramos 365 días del<br>
+        amor más puro que pudo<br>
+        llegar a nuestras vidas.<br>
+        Con mucha alegría<br>
+        queríamos invitarte a ser<br>
+        parte de este momento<br>
+        especial
+      </p>
+    </section>
+
+    <!-- ================= SLIDE 3: NOMBRE Y 1 AÑITO ================= -->
+    <section class="slide slide-3-fondo" data-slide="2">
+      <div class="hero-number-group bounce-in">
+        <span class="big-number">1</span>
+        <img src="minnie3.png" alt="Minnie con osito" class="character-overlap" onerror="this.style.display='none'">
+      </div>
+      <h1 class="name-title fade-up">Mónica</h1>
+      <h3 class="subtitle fade-up">Mi Primer Añito</h3>
+    </section>
+
+    <!-- ================= SLIDE 4: FOTOS DE LA BEBÉ ================= -->
+    <section class="slide" data-slide="3">
+      <h2 class="curved-title small-curve">Momentos</h2>
+      <div class="photos-collage">
+        <div class="photo-circle top-photo bounce-in">
+          <img src="foto1.jpg" alt="Foto 1" onerror="this.src='https://via.placeholder.com/200/ffd6e0/b86b82?text=Foto+1'">
+        </div>
+        <div class="photo-circle bottom-photo bounce-in">
+          <img src="foto2.jpg" alt="Foto 2" onerror="this.src='https://via.placeholder.com/200/ffd6e0/b86b82?text=Foto+2'">
+        </div>
+        <img src="minnie3.png" alt="Minnie" class="corner-minnie" onerror="this.style.display='none'">
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 5: FECHA, HORA Y LUGAR ================= -->
+    <section class="slide" data-slide="4">
+      <div class="mini-header fade-up">
+        <span class="mini-one">1</span>
+        <span class="mini-name">Mónica</span>
+        <p class="mini-sub">Mi Primer Añito</p>
+      </div>
+
+      <!-- Silueta de cabeza de Minnie para el día -->
+      <div class="date-row bounce-in">
+        <div class="date-side">
+          <span class="line"></span>
+          <span class="date-label">Jueves</span>
+          <span class="line"></span>
+        </div>
+
+        <div class="minnie-head">
+          <div class="ear left"></div>
+          <div class="ear right"></div>
+          <div class="bow">🎀</div>
+          <span class="day-number">15</span>
+        </div>
+
+        <div class="date-side">
+          <span class="line"></span>
+          <span class="date-label">Julio</span>
+          <span class="line"></span>
+        </div>
+      </div>
+
+      <div class="event-details fade-up">
+        <p class="time-text">18:00 a 23:00 hs</p>
+        <p class="place-text">En Parque Olivos<br>246</p>
+      </div>
+    </section>
+      
+    <!-- ================= SLIDE 6: CONFIRMACIÓN ================= -->
+    <section class="slide slide-confirmacion" data-slide="5">
+      <!-- Botón funcional de WhatsApp abajo -->
+      <a href="https://wa.me/59575963603?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Mónica%20🎀" 
+         target="_blank" 
+         class="btn-whatsapp">
+         Confirmar por WhatsApp
+      </a>
+    </section>
+
+    <!-- Zonas táctiles invisibles y botones de control -->
+    <div class="nav-zone prev" id="prevZone"></div>
+    <div class="nav-zone next" id="nextZone"></div>
+
+    <div class="controls">
+      <button id="prevBtn" title="Anterior">❮</button>
+      <button id="playPauseBtn" title="Pausar/Reproducir">❚❚</button>
+      <button id="nextBtn" title="Siguiente">❯</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

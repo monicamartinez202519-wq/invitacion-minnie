@@ -1,0 +1,541 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+  overflow: hidden;
+}
+
+/* Marco vertical tipo historia/reel (9:16) */
+.invitation-container {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  height: 100vh;
+  max-height: 750px;
+  background: radial-gradient(circle at 50% 15%, #fffdf5 0%, #ffe6ee 45%, #fbc8d8 100%);
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+}
+
+/* Barras de progreso superiores */
+.progress-bars {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 30;
+}
+
+.bar {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar .fill {
+  width: 0%;
+  height: 100%;
+  background: #d87a96;
+  transition: width 0.1s linear;
+}
+
+/* Decoración de fondo */
+.background-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 60%;
+  background: radial-gradient(ellipse at top, rgba(255, 249, 214, 0.85), transparent 70%);
+}
+
+.bunting {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  z-index: 5;
+}
+
+.castle-bg {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 340px;
+  background: rgba(242, 166, 188, 0.22);
+  clip-path: polygon(
+    50% 0%, 53% 15%, 60% 15%, 60% 30%, 72% 22%, 76% 38%, 88% 35%, 92% 100%, 
+    8% 100%, 12% 35%, 24% 38%, 28% 22%, 40% 30%, 40% 15%, 47% 15%
+  );
+  filter: blur(1px);
+}
+
+/* Diapositivas */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 25px 70px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease-in-out;
+  z-index: 10;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tipografías con borde blanco estilo sticker */
+.curved-title, .script-big, .name-title, .subtitle, .dedication-text, .date-label, .time-text, .place-text {
+  font-family: 'Dancing Script', cursive;
+  color: #cf7691;
+  -webkit-text-stroke: 5px #ffffff;
+  paint-order: stroke fill;
+  text-shadow: 0 3px 8px rgba(184, 92, 120, 0.25);
+}
+
+.curved-title {
+  font-size: 3.3rem;
+  margin-bottom: 10px;
+  transform: rotate(-3deg);
+}
+
+.small-curve {
+  font-size: 2.6rem;
+}
+
+.script-big {
+  font-family: 'Alex Brush', cursive;
+  font-size: 4.5rem;
+  margin-top: -15px;
+  z-index: 12;
+}
+
+/* Imágenes y nube */
+.center-art {
+  position: relative;
+  width: 240px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.character-img {
+  width: 190px;
+  z-index: 4;
+  object-fit: contain;
+}
+
+.character-img.small {
+  width: 170px;
+}
+
+.cloud-base {
+  position: absolute;
+  bottom: 5px;
+  width: 230px;
+  height: 55px;
+  background: #ffd6e2;
+  border-radius: 50px;
+  box-shadow: 0 8px 15px rgba(216, 122, 150, 0.2);
+  z-index: 2;
+}
+
+/* Slide 2: Dedicatoria */
+.dedication-text {
+  font-size: 1.75rem;
+  line-height: 1.38;
+  -webkit-text-stroke: 4px #ffffff;
+  margin-bottom: 15px;
+}
+
+/* Slide 3: Número 1 + Eidha */
+.hero-number-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
+
+.big-number {
+  font-size: 14rem;
+  font-weight: 700;
+  color: #fbd0dc;
+  -webkit-text-stroke: 6px #e695ae;
+  paint-order: stroke fill;
+  line-height: 1;
+  transform: translateX(-30px);
+}
+
+.character-overlap {
+  position: absolute;
+  right: -45px;
+  bottom: 10px;
+  width: 185px;
+}
+
+.name-title {
+  font-family: 'Alex Brush', cursive;
+  font-size: 4.8rem;
+  margin-top: -15px;
+}
+
+.subtitle {
+  font-size: 2rem;
+  color: #b8627d;
+}
+
+/* Slide 4: Collage de Fotos */
+.photos-collage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.photo-circle {
+  width: 195px;
+  height: 195px;
+  border-radius: 50%;
+  border: 6px solid #f7b6c8;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.top-photo {
+  align-self: flex-start;
+  margin-left: 10px;
+}
+
+.bottom-photo {
+  align-self: flex-end;
+  margin-right: 10px;
+}
+
+.collage-number {
+  position: absolute;
+  top: 25%;
+  right: 25px;
+  font-size: 7.5rem;
+  font-weight: 700;
+  color: #fbd0dc;
+  -webkit-text-stroke: 4px #e695ae;
+  paint-order: stroke fill;
+}
+
+.corner-minnie {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 145px;
+}
+
+/* Slide 5: Fecha y Silueta Minnie */
+.mini-header {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.mini-one {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #fbd0dc;
+  -webkit-text-stroke: 3px #e695ae;
+  paint-order: stroke fill;
+}
+
+.mini-name {
+  display: block;
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.8rem;
+  color: #cf7691;
+  margin-top: -45px;
+  -webkit-text-stroke: 3px #fff;
+  paint-order: stroke fill;
+}
+
+.mini-sub {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: #b8627d;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 25px 0;
+  width: 100%;
+}
+
+.date-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.date-side .line {
+  width: 100%;
+  height: 2px;
+  background: #e6a4b8;
+  margin: 4px 0;
+}
+
+.date-label {
+  font-size: 1.7rem;
+  -webkit-text-stroke: 3px #fff;
+}
+
+.minnie-head {
+  position: relative;
+  width: 115px;
+  height: 115px;
+  background: #f8c4d4;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 15px rgba(216, 122, 150, 0.25);
+}
+
+.minnie-head .ear {
+  position: absolute;
+  top: -28px;
+  width: 62px;
+  height: 62px;
+  background: #f8c4d4;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.minnie-head .ear.left { left: -18px; }
+.minnie-head .ear.right { right: -18px; }
+
+.minnie-head .bow {
+  position: absolute;
+  top: -24px;
+  font-size: 2.4rem;
+}
+
+.day-number {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #cf7691;
+  -webkit-text-stroke: 4px #fff;
+  paint-order: stroke fill;
+}
+
+.time-text, .place-text {
+  font-size: 1.85rem;
+  margin: 10px 0;
+  -webkit-text-stroke: 4px #fff;
+}
+
+.bottom-right-minnie {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 120px;
+}
+
+/* Botón WhatsApp */
+.btn-whatsapp {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #f28ba8, #d86c8c);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 30px;
+  border: 3px solid #fff;
+  box-shadow: 0 6px 15px rgba(216, 108, 140, 0.4);
+  z-index: 25;
+  transition: transform 0.2s;
+}
+
+.btn-whatsapp:hover {
+  transform: scale(1.05);
+}
+
+/* Animaciones al activar slide */
+.slide.active .bounce-in {
+  animation: bounceIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.slide.active .fade-up {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.7) translateY(20px); }
+  70% { opacity: 1; transform: scale(1.04) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Controles inferiores y zonas táctiles */
+.nav-zone {
+  position: absolute;
+  top: 40px;
+  bottom: 70px;
+  width: 30%;
+  z-index: 20;
+  cursor: pointer;
+}
+.nav-zone.prev { left: 0; }
+.nav-zone.next { right: 0; }
+
+.controls {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  background: rgba(90, 60, 70, 0.55);
+  padding: 6px 18px;
+  border-radius: 25px;
+  z-index: 30;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Partículas doradas flotantes */
+.sparkle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #f5cf76;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: floatSparkle 4s infinite ease-in-out;
+}
+
+@keyframes floatSparkle {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-20px) scale(1.4); opacity: 0.9; }
+}
+
+/* Fondo personalizado para la diapositiva 2 */
+.slide-dedication {
+  background-image: url('img/fondo2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Ajuste para que el texto se lea bien sobre cualquier fondo */
+.dedication-text {
+  font-size: 1.75rem;
+  line-height: 1.38;
+  color: #cf7691;
+  -webkit-text-stroke: 5px #ffffff;
+  paint-order: stroke fill;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  z-index: 15;
+}
+
+/* Fondo completo con el marco de minnie2.png en el Slide 2 */
+.slide-2-marco {
+  background-image: url('minnie2.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 135px 48px 145px;
+}
+
+.slide-2-marco .dedication-text {
+  font-size: 1.48rem;
+  line-height: 1.32;
+  margin-bottom: 0;
+}
+
+/* Pantalla de confirmación con la imagen completa de fondo */
+.slide-confirmacion {
+  background-image: url('minnie6.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Manda el botón de WhatsApp hacia abajo */
+  padding-bottom: 40px;
+}
+
+/* Botón flotante de música ajustado y dentro del marco */
+.music-btn {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #e695ae;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(216, 108, 140, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
